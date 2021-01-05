@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--    <bean id="numberGenerator" class="programming.bryan.NumberGeneratorImpl"/>-->
+    <!--    <bean id="game" class="programming.bryan.GameImpl">-->
+    <!--        <constructor-arg ref="numberGenerator"/>-->
+    <!--    </bean>-->
+
+    <bean id="person" class="programming.bryan.PersonImpl">
+        <constructor-arg value="777" name="id" type="int"/>
+        <constructor-arg value="mary" name="name" type="String"/>
+        <!--        <property name="taxId" value="123"/>-->
+        <property name="taxId">
+            <value>123456</value>
+        </property>
+        <property name="address" ref="address"> </property>
+    </bean>
+
+    <bean id="address" class="programming.bryan.AddressImpl">
+        <constructor-arg value="1 temple lane" name="street" type="String"/>
+        <constructor-arg value="9876" name="postCode" type="String"/>
+    </bean>
+
+</beans>
