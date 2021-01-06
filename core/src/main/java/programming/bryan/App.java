@@ -11,7 +11,7 @@ private static final Logger log = LoggerFactory.getLogger(App.class);
 private static final String CONFIG_LOCATION = "beans.xml";
 
     public static void main(String[] args) {
-        log.info("guess the number game");
+        log.info("Inside app.main()");
 
         //== create context ==
         ConfigurableApplicationContext context =
@@ -19,13 +19,19 @@ private static final String CONFIG_LOCATION = "beans.xml";
 
         //== create person ==
         Person person = context.getBean("person", Person.class);
+//        Person person2 = context.getBean("person", Person.class);
+//        person.speak();
 
-        person.speak();
+        Address address2 = (Address)context.getBean("address2");
+        log.info("address2: " + address2);
 
+        person.setTaxId(8282);
         log.info("INFO person: " + person.toString());
 
-        Address address = context.getBean("address", Address.class);
-        log.info("address: " + address.toString());
+//        Address address = context.getBean("address", Address.class);
+//        log.info("address: " + address.toString());
+
+        context.close();
     }
 
 

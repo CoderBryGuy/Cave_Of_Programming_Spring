@@ -1,16 +1,28 @@
 package programming.bryan;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PersonImpl implements Person {
+
+    private static final Logger log = LoggerFactory.getLogger(App.class);
 
     private int id;
     private String name;
     private int taxId;
     private Address address;
 
+    public PersonImpl() {
+    }
 
     public PersonImpl(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public static Person getInstance(int id, String name){
+        log.info("inside PersonImpl.getInstance()");
+        return new PersonImpl(id,name);
     }
 
     public void speak(){
@@ -23,6 +35,16 @@ public class PersonImpl implements Person {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public void onCreate() {
+        log.info("person created: " + this);
+    }
+
+    @Override
+    public void onDestroy() {
+        log.info("person destroyed: " + this);
     }
 
     @Override

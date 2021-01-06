@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           http://www.springframework.org/schema/beans/spring-beans.xsd"
+            default-init-method="init" default-destroy-method="destroy">
 
 
     <!--    <bean id="numberGenerator" class="programming.bryan.NumberGeneratorImpl"/>-->
@@ -10,7 +12,9 @@
     <!--        <constructor-arg ref="numberGenerator"/>-->
     <!--    </bean>-->
 
-    <bean id="person" class="programming.bryan.PersonImpl">
+    <bean id="person" class="programming.bryan.PersonImpl"
+    scope="singleton" init-method="onCreate" destroy-method="onDestroy"
+    factory-method="getInstance">
         <constructor-arg value="777" name="id" type="int"/>
         <constructor-arg value="mary" name="name" type="String"/>
         <!--        <property name="taxId" value="123"/>-->
@@ -24,5 +28,29 @@
         <constructor-arg value="1 temple lane" name="street" type="String"/>
         <constructor-arg value="9876" name="postCode" type="String"/>
     </bean>
+
+    <bean id="address2" class="programming.bryan.AddressImpl">
+        <constructor-arg value="1 temple lane" name="street" type="String"/>
+        <constructor-arg value="9876" name="postCode" type="String"/>
+    </bean>
+
+    <bean id="person2" class="programming.bryan.PersonImpl"
+          scope="singleton" init-method="onCreate" destroy-method="onDestroy"
+          factory-method="createPerson" factory-bean="personFactory">
+<!--        <constructor-arg value="654" name="id" type="int"/>-->
+<!--        <constructor-arg value="mike" name="name" type="String"/>-->
+        <!--        <property name="taxId" value="123"/>-->
+        <property name="taxId">
+            <value>123456</value>
+        </property>
+        <property name="address" ref="address"> </property>
+    </bean>
+
+    <bean id="personFactory" class="programming.bryan.PersonFactory"></bean>
+
+<!--    <bean id="address" class="programming.bryan.AddressImpl">-->
+<!--        <constructor-arg value="1 temple lane" name="street" type="String"/>-->
+<!--        <constructor-arg value="9876" name="postCode" type="String"/>-->
+<!--    </bean>-->
 
 </beans>
