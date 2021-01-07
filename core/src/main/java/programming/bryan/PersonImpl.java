@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class PersonImpl implements Person {
 
-    private static final Logger log = LoggerFactory.getLogger(App.class);
+    private static final Logger log = LoggerFactory.getLogger(PersonImpl.class);
 
     private int id;
     private String name;

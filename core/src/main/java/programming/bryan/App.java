@@ -7,15 +7,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
 
-private static final Logger log = LoggerFactory.getLogger(App.class);
-private static final String CONFIG_LOCATION = "beans.xml";
+    private static final Logger log = LoggerFactory.getLogger(App.class);
+    private static final String CONFIG_LOCATION = "beans.xml";
 
     public static void main(String[] args) {
         log.info("Inside app.main()");
 
         //== create context ==
         ConfigurableApplicationContext context =
-            new ClassPathXmlApplicationContext(CONFIG_LOCATION);
+                new ClassPathXmlApplicationContext(CONFIG_LOCATION);
 
         //== create person ==
         Person person = context.getBean("person", Person.class);

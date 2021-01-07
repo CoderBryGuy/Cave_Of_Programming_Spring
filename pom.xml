@@ -10,6 +10,7 @@
     <modules>
 <!--        <module>console</module>-->
         <module>core</module>
+        <module>Jungle</module>
     </modules>
     <packaging>pom</packaging>
 

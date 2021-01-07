@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class AddressImpl implements Address {
 
-    private static final Logger log = LoggerFactory.getLogger(App.class);
+    private static final Logger log = LoggerFactory.getLogger(AddressImpl.class);
     private String street;
     private String postCode;
 

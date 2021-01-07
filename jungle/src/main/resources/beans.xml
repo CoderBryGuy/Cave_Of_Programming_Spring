@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd"
+            default-init-method="init" default-destroy-method="destroy">
+
+
+    <bean id="jungle" class="programming.bryan.JungleImpl">
+        <property name="largest" ref="elephant"/>
+        <property name="animals">
+            <list>
+                <ref bean="snake"/>
+                <ref bean="elephant"/>
+                <ref bean="lion"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="lion" class="programming.bryan.AnimalImpl">
+        <property name="name" value="Igor"/>
+        <property name="type" value="lion"/>
+    </bean>
+
+    <bean id="elephant" class="programming.bryan.AnimalImpl">
+        <property name="name" value="Richard"/>
+        <property name="type" value="elephant"/>
+    </bean>
+
+    <bean id="snake" class="programming.bryan.AnimalImpl">
+        <property name="name" value="Bob"/>
+        <property name="type" value="snake"/>
+    </bean>
+
+</beans>
