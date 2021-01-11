@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+
+    <bean id="logger" class="programming.bryan.Logger" autowire="byType">
+
+    </bean>
+
+    <bean id="fileWriter" class="programming.bryan.FileWriter"/>
+
+    <bean id="console" class="programming.bryan.ConsoleWriter"/>
+
+    </beans>

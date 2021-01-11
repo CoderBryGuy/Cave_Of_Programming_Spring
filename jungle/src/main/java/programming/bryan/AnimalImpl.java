@@ -3,6 +3,8 @@ package programming.bryan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
+
 public class AnimalImpl implements Animal {
 
     private String name;
@@ -44,5 +46,18 @@ public class AnimalImpl implements Animal {
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AnimalImpl)) return false;
+        AnimalImpl animal = (AnimalImpl) o;
+        return name.equals(animal.name) && type.equals(animal.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, type);
     }
 }

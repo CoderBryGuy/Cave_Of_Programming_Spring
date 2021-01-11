@@ -11,6 +11,7 @@
 <!--        <module>console</module>-->
         <module>core</module>
         <module>Jungle</module>
+        <module>Logger</module>
     </modules>
     <packaging>pom</packaging>
 
