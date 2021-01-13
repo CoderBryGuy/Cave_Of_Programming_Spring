@@ -1,24 +1,49 @@
 package programming.bryan;
 
 
+import javax.annotation.Resource;
+
 public class Logger {
 
-    private ConsoleWriter consoleWriter;
-    private FileWriter fileWriter;
+//    public Logger(ConsoleWriter consoleWriter, FileWriter fileWriter){
+//        this.consoleWriter = consoleWriter;
+//        this.fileWriter = fileWriter;
+//    }
 
-    public void setConsoleWriter(ConsoleWriter consoleWriter) {
+//    @Autowired
+    private LogWriter consoleWriter;
+//    @Autowired
+    private LogWriter fileWriter;
+
+//    @Autowired
+//    public Logger(ConsoleWriter consoleWriter, FileWriter fileWriter) {
+//        this.consoleWriter = consoleWriter;
+//        this.fileWriter = fileWriter;
+//    }
+
+//    @Autowired
+//    @Qualifier("toconsole")
+    @Resource
+    public void setConsoleWriter(LogWriter consoleWriter) {
         this.consoleWriter = consoleWriter;
     }
 
-    public void setFileWriter(FileWriter fileWriter){
+//    @Autowired
+//    @Qualifier("fileWriter")
+    @Resource(name="squirrel")
+    public void setFileWriter(LogWriter fileWriter){
         this.fileWriter = fileWriter;
     }
 
     public void writefile(String text){
+        if(consoleWriter != null) {
             fileWriter.write(text);
+        }
     }
 
     public void writeConsole(String text){
-        consoleWriter.write(text);
+        if(consoleWriter != null) {
+            consoleWriter.write(text);
+        }
     }
 }

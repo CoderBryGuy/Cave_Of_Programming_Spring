@@ -2,15 +2,24 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd"
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+       xmlns:context="http://www.springframework.org/schema/context"
 >
 
-    <bean id="logger" class="programming.bryan.Logger" autowire="byType">
-
+    <bean id="logger" class="programming.bryan.Logger">
     </bean>
 
     <bean id="fileWriter" class="programming.bryan.FileWriter"/>
+    <bean id="squirrel" class="programming.bryan.FileWriter"/>
 
-    <bean id="console" class="programming.bryan.ConsoleWriter"/>
+    <bean id="consoleWriter" class="programming.bryan.ConsoleWriter">
+        <qualifier value="toconsole">
 
-    </beans>
+        </qualifier>
+    </bean>
+
+    <context:annotation-config/>
+
+</beans>
